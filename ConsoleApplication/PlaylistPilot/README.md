@@ -2,7 +2,7 @@
 
 A modern, feature-rich console application for managing your music playlists built with .NET 8 and Entity Framework Core.
 
-![PlaylistPilot Banner](https://via.placeholder.com/800x200/6A5ACD/FFFFFF?text=PlaylistPilot+🎵)
+![Screenshot 2025-06-28 185254](https://github.com/user-attachments/assets/19fd252d-fd9a-45ef-a63b-142739877baa)
 
 ## 🚀 Features
 
