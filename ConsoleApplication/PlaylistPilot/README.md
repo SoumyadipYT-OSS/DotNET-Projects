@@ -91,6 +91,8 @@ When you first run PlaylistPilot, you'll see the welcome banner and main menu:
 
 ## 🏗️ Project Structure
 
+![Screenshot 2025-06-28 185551](https://github.com/user-attachments/assets/c7341a9e-1a9f-432d-97c8-ff06e4d20c37)
+
 
 ## 🗄️ Database Schema
 
