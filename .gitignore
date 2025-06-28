@@ -1,0 +1,162 @@
+# --------------------
+# Build & output
+# --------------------
+[Bb]in/
+[Oo]bj/
+out/
+artifacts/
+TestResults/
+*.log
+
+# --------------------
+# User-specific files
+# --------------------
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.lastcodeanalysis
+*.sln.docstates
+
+# --------------------
+# Visual Studio
+# --------------------
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.dbmdl
+
+# --------------------
+# VS Code
+# --------------------
+.vscode/
+.history/
+
+# --------------------
+# Rider / JetBrains
+# --------------------
+.idea/
+*.sln.iml
+*.dotCover
+
+# --------------------
+# Mono / Xamarin / MAUI
+# --------------------
+*.pidb
+*.userprefs
+*.pdb
+*.mdb
+*.exe
+*.dll
+*.app
+*.apk
+*.aar
+*.xcodeproj/
+*.xcworkspace/
+pkg/
+obj/
+bin/
+
+# Android
+*/obj/Debug/
+*/bin/Debug/
+*/obj/Release/
+*/bin/Release/
+
+# iOS
+build/
+/*.app
+*.dSYM.zip
+*.xcarchive
+
+# MAUI
+Platforms/**/bin/
+Platforms/**/obj/
+Resources/**/g/
+
+# --------------------
+# NuGet & packages
+# --------------------
+*.nupkg
+*.snupkg
+# The packages folder can be ignored because of PackageReference
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# --------------------
+# .NET Core / ASP.NET Core
+# --------------------
+project.lock.json
+project.fragment.lock.json
+*.db
+*.sqlite
+appsettings.*.json
+# but keep appsettings.json in source
+
+# Entity Framework
+Migrations/
+
+# User Secrets (if using Secret Manager)
+secrets.json
+
+# Azure Functions
+.local.settings.json
+
+# --------------------
+# Dotnet tools & caches
+# --------------------
+.cache/
+.dotnet/
+tools/
+global.json
+
+# --------------------
+# Test results
+# --------------------
+*.trx
+*.coverage
+coverage/
+coverage.*.xml
+
+# --------------------
+# Logs
+# --------------------
+logs/
+*.log
+
+# --------------------
+# OS generated
+# --------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# --------------------
+# Temporary files
+# --------------------
+~$*
+*.tmp
+*.temp
+*.bak
+*.orig
+*.swp
+*.lock
+
+# --------------------
+# JetBrains Rider caches
+# --------------------
+.idea/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/httpRequests
+.idea/markdown-navigator.xml
