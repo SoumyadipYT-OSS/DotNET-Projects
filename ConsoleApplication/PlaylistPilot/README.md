@@ -101,6 +101,8 @@ When you first run PlaylistPilot, you'll see the welcome banner and main menu:
 - **Playlists**: Store playlist information (name, description, dates)
 - **PlaylistSongs**: Junction table with ordering (playlist-song relationships)
 
+![Screenshot 2025-06-28 185906](https://github.com/user-attachments/assets/510c83e8-3c2e-4ae5-98b5-3788462794ed)
+
 ### Key Features
 - **Foreign Key Constraints**: Maintain data integrity
 - **Cascade Deletes**: Clean up related data automatically
