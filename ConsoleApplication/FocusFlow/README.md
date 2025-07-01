@@ -5,6 +5,8 @@ Track your focus sessions, visualize your progress, and stay in the zone—all f
 
 ---
 
+![Screenshot 2025-06-29 032255](https://github.com/user-attachments/assets/0c6491cd-35a9-4f85-bd39-a31fc3faebb2)
+
 ## 🚀 Features
 
 - ⏱️ Real-time Pomodoro timer with animated progress bar
@@ -15,6 +17,8 @@ Track your focus sessions, visualize your progress, and stay in the zone—all f
 - 🎨 Customizable themes (Ocean, Sunset, Sunrise, etc.)
 - 🔔 Auto-start next session with optional prompts
 - 💾 Persistent settings via `settings.json`
+
+![Screenshot 2025-06-29 032320](https://github.com/user-attachments/assets/9d7546c4-b747-41fc-b9dd-6e8151771ec5)
 
 ---
 
