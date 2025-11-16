@@ -160,3 +160,34 @@ $RECYCLE.BIN/
 .idea/dictionaries
 .idea/httpRequests
 .idea/markdown-navigator.xml
+
+
+# ===== ASP.NET Core =====
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Core secrets
+appsettings.*.json
+!appsettings.json  # Keep base config if needed
+
+# ===== Angular =====
+node_modules/
+dist/
+tmp/
+out-tsc/
+.angular/
+.angular/cache/
+
+# Angular environment files
+src/environments/environment.*.ts
+!src/environments/environment.ts  # Keep base config if needed
+
+

@@ -1,0 +1,86 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="mb-4">My Todos</h1>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ errorMessage }}
+        <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div *ngIf="!loading" class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Status Filter</label>
+              <div class="btn-group w-100" role="group">
+                <input type="radio" class="btn-check" name="filter" id="filter-all"
+                       [checked]="filterBy === 'all'" (change)="onFilterChange('all')">
+                <label class="btn btn-outline-primary" for="filter-all">All</label>
+
+                <input type="radio" class="btn-check" name="filter" id="filter-active"
+                       [checked]="filterBy === 'active'" (change)="onFilterChange('active')">
+                <label class="btn btn-outline-primary" for="filter-active">Active</label>
+
+                <input type="radio" class="btn-check" name="filter" id="filter-completed"
+                       [checked]="filterBy === 'completed'" (change)="onFilterChange('completed')">
+                <label class="btn btn-outline-primary" for="filter-completed">Completed</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Category Filter</label>
+              <select class="form-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)">
+                <option value="">All Categories</option>
+                <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Todos List -->
+      <div *ngIf="!loading && filteredTodos.length === 0" class="alert alert-info">
+        No todos found. Create one to get started!
+      </div>
+
+      <div *ngIf="!loading && filteredTodos.length > 0" class="list-group">
+        <div *ngFor="let todo of filteredTodos" class="list-group-item">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                       [id]="'todo-' + todo.id"
+                       [checked]="todo.isComplete"
+                       (change)="toggleCompletion(todo)">
+                <label class="form-check-label" [for]="'todo-' + todo.id"
+                       [ngClass]="{'text-decoration-line-through': todo.isComplete}">
+                  <strong>{{ todo.title }}</strong>
+                </label>
+              </div>
+              <p *ngIf="todo.description" class="text-muted small mb-2">{{ todo.description }}</p>
+              <div class="d-flex gap-2 flex-wrap">
+                <span class="badge" [ngClass]="'bg-' + getPriorityClass(todo.priority)">
+                  {{ getPriorityText(todo.priority) }}
+                </span>
+                <span *ngIf="todo.category" class="badge bg-secondary">{{ todo.category }}</span>
+                <span *ngIf="todo.dueDate" class="badge bg-light text-dark">
+                  Due: {{ todo.dueDate | date: 'MMM d, yyyy' }}
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-danger ms-3" (click)="deleteTodo(todo.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

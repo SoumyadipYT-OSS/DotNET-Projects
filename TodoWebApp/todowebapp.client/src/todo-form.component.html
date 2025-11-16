@@ -1,0 +1,126 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">{{ isEditMode ? 'Edit Todo' : 'Create New Todo' }}</h5>
+  </div>
+  <div class="card-body">
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ errorMessage }}
+      <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ successMessage }}
+    </div>
+
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <!-- Title Field -->
+      <div class="mb-3">
+        <label for="title" class="form-label fw-bold">Title <span class="text-danger">*</span></label>
+        <input type="text"
+               class="form-control"
+               id="title"
+               formControlName="title"
+               placeholder="Enter todo title"
+               [class.is-invalid]="title?.invalid && title?.touched">
+        <div *ngIf="title?.invalid && title?.touched" class="invalid-feedback">
+          <div *ngIf="title?.errors?.['required']">Title is required.</div>
+          <div *ngIf="title?.errors?.['minlength']">Title must be at least 3 characters.</div>
+          <div *ngIf="title?.errors?.['maxlength']">Title cannot exceed 200 characters.</div>
+        </div>
+      </div>
+
+      <!-- Description Field -->
+      <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea class="form-control"
+                  id="description"
+                  formControlName="description"
+                  rows="3"
+                  placeholder="Enter todo description (optional)"
+                  [class.is-invalid]="description?.invalid && description?.touched"></textarea>
+        <div *ngIf="description?.invalid && description?.touched" class="invalid-feedback">
+          <div *ngIf="description?.errors?.['maxlength']">Description cannot exceed 2000 characters.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Priority Field -->
+        <div class="col-md-6 mb-3">
+          <label for="priority" class="form-label fw-bold">Priority <span class="text-danger">*</span></label>
+          <select class="form-select"
+                  id="priority"
+                  formControlName="priority"
+                  [class.is-invalid]="priority?.invalid && priority?.touched">
+            <option *ngFor="let p of priorities" [value]="TodoPriority[p as keyof typeof TodoPriority]">
+              {{ p }}
+            </option>
+          </select>
+          <div *ngIf="priority?.invalid && priority?.touched" class="invalid-feedback">
+            Priority is required.
+          </div>
+        </div>
+
+        <!-- Due Date Field -->
+        <div class="col-md-6 mb-3">
+          <label for="dueDate" class="form-label fw-bold">Due Date</label>
+          <input type="date"
+                 class="form-control"
+                 id="dueDate"
+                 formControlName="dueDate"
+                 [class.is-invalid]="dueDate?.invalid && dueDate?.touched">
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Category Field -->
+        <div class="col-md-6 mb-3">
+          <label for="category" class="form-label fw-bold">Category</label>
+          <input type="text"
+                 class="form-control"
+                 id="category"
+                 formControlName="category"
+                 placeholder="e.g., Work, Personal, Shopping"
+                 [class.is-invalid]="category?.invalid && category?.touched">
+          <div *ngIf="category?.invalid && category?.touched" class="invalid-feedback">
+            <div *ngIf="category?.errors?.['maxlength']">Category cannot exceed 100 characters.</div>
+          </div>
+        </div>
+
+        <!-- Tags Field -->
+        <div class="col-md-6 mb-3">
+          <label for="tags" class="form-label fw-bold">Tags</label>
+          <input type="text"
+                 class="form-control"
+                 id="tags"
+                 formControlName="tags"
+                 placeholder="e.g., urgent, #client-a"
+                 [class.is-invalid]="tags?.invalid && tags?.touched">
+          <div *ngIf="tags?.invalid && tags?.touched" class="invalid-feedback">
+            <div *ngIf="tags?.errors?.['maxlength']">Tags cannot exceed 500 characters.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="d-flex gap-2">
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="isSubmitting || todoForm.invalid">
+          <span *ngIf="!isSubmitting">{{ isEditMode ? 'Update Todo' : 'Create Todo' }}</span>
+          <span *ngIf="isSubmitting">
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Saving...
+          </span>
+        </button>
+        <button type="button"
+                class="btn btn-secondary"
+                (click)="closeForm()"
+                [disabled]="isSubmitting">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

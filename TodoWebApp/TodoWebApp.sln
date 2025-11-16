@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "todowebapp.client", "todowebapp.client\todowebapp.client.esproj", "{C9924677-2EE0-5BAD-BA33-90AEF082D36E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoWebApp.Server", "TodoWebApp.Server\TodoWebApp.Server.csproj", "{A93199AA-9E83-4EF3-9DB6-0F122A15DDFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9924677-2EE0-5BAD-BA33-90AEF082D36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9924677-2EE0-5BAD-BA33-90AEF082D36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9924677-2EE0-5BAD-BA33-90AEF082D36E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C9924677-2EE0-5BAD-BA33-90AEF082D36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9924677-2EE0-5BAD-BA33-90AEF082D36E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9924677-2EE0-5BAD-BA33-90AEF082D36E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A93199AA-9E83-4EF3-9DB6-0F122A15DDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93199AA-9E83-4EF3-9DB6-0F122A15DDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93199AA-9E83-4EF3-9DB6-0F122A15DDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93199AA-9E83-4EF3-9DB6-0F122A15DDFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69E35245-7A8D-44E4-A4E1-28FB2206A26F}
+	EndGlobalSection
+EndGlobal

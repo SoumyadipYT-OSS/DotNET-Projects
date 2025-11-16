@@ -1,0 +1,129 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">
+        <span style="font-size: 2rem; margin-right: 0.5rem;">📋</span>
+        My Todos
+      </h1>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>⚠️ Error!</strong> {{ errorMessage }}
+        <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3 text-muted">Loading your todos...</p>
+      </div>
+
+      <!-- Filters -->
+      <div *ngIf="!loading" class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 col-12 mb-3 mb-md-0">
+              <label class="form-label fw-bold">
+                <span style="margin-right: 0.375rem;">🎯</span>
+                Status Filter
+              </label>
+              <div class="btn-group w-100" role="group" aria-label="Status filter">
+                <input type="radio" class="btn-check" name="filter" id="filter-all"
+                       [checked]="filterBy === 'all'" (change)="onFilterChange('all')">
+                <label class="btn btn-outline-primary" for="filter-all">All</label>
+
+                <input type="radio" class="btn-check" name="filter" id="filter-active"
+                       [checked]="filterBy === 'active'" (change)="onFilterChange('active')">
+                <label class="btn btn-outline-primary" for="filter-active">Active</label>
+
+                <input type="radio" class="btn-check" name="filter" id="filter-completed"
+                       [checked]="filterBy === 'completed'" (change)="onFilterChange('completed')">
+                <label class="btn btn-outline-primary" for="filter-completed">Completed</label>
+              </div>
+            </div>
+            <div class="col-md-6 col-12">
+              <label class="form-label fw-bold">
+                <span style="margin-right: 0.375rem;">📁</span>
+                Category Filter
+              </label>
+              <select class="form-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)" aria-label="Category filter">
+                <option value="">All Categories</option>
+                <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Todos Summary -->
+      <div *ngIf="!loading && todos.length > 0" class="mb-3">
+        <p class="text-muted">
+          <strong>{{ filteredTodos.length }}</strong> of <strong>{{ todos.length }}</strong> todos
+          <span *ngIf="filterBy !== 'all'"> | {{ filterBy }}</span>
+          <span *ngIf="selectedCategory"> | {{ selectedCategory }}</span>
+        </p>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!loading && filteredTodos.length === 0 && todos.length === 0" class="alert alert-info text-center">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+        <h4>No todos yet!</h4>
+        <p class="mb-0">Create your first todo to get started on your tasks.</p>
+      </div>
+
+      <!-- No Results State -->
+      <div *ngIf="!loading && filteredTodos.length === 0 && todos.length > 0" class="alert alert-info text-center">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
+        <h5>No todos match your filters</h5>
+        <p class="mb-0">Try adjusting your filters to see more results.</p>
+      </div>
+
+      <!-- Todos List -->
+      <div *ngIf="!loading && filteredTodos.length > 0" class="list-group">
+        <div *ngFor="let todo of filteredTodos; let i = index" class="list-group-item">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                       [id]="'todo-' + todo.id"
+                       [checked]="todo.isComplete"
+                       (change)="toggleCompletion(todo)"
+                       [attr.aria-label]="'Mark ' + todo.title + ' as ' + (todo.isComplete ? 'incomplete' : 'complete')">
+                <label class="form-check-label" [for]="'todo-' + todo.id"
+                       [ngClass]="{'text-decoration-line-through': todo.isComplete}">
+                  <strong>{{ todo.title }}</strong>
+                </label>
+              </div>
+              <p *ngIf="todo.description" class="text-muted small mb-2">{{ todo.description }}</p>
+              <div class="d-flex gap-2 flex-wrap mt-2">
+                <span class="badge" [ngClass]="'bg-' + getPriorityClass(todo.priority)" 
+                      [attr.aria-label]="'Priority: ' + getPriorityText(todo.priority)">
+                  <span *ngIf="todo.priority === 2">🔴</span>
+                  <span *ngIf="todo.priority === 1">🟡</span>
+                  <span *ngIf="todo.priority === 0">🟢</span>
+                  {{ getPriorityText(todo.priority) }}
+                </span>
+                <span *ngIf="todo.category" class="badge bg-secondary">
+                  <span style="margin-right: 0.25rem;">📁</span>{{ todo.category }}
+                </span>
+                <span *ngIf="todo.dueDate" class="badge bg-light text-dark">
+                  <span style="margin-right: 0.25rem;">📅</span>Due: {{ todo.dueDate | date: 'MMM d, yyyy' }}
+                </span>
+                <span *ngIf="todo.tags" class="badge bg-info">
+                  <span style="margin-right: 0.25rem;">🏷️</span>{{ todo.tags }}
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-danger ms-3" 
+                    (click)="deleteTodo(todo.id)"
+                    [attr.aria-label]="'Delete ' + todo.title">
+              <span style="font-size: 1rem;">🗑️</span> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

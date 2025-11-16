@@ -1,0 +1,60 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">✓ {{ title }}</span>
+  </div>
+</nav>
+
+<div class="app-background-gradient"></div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <!-- Create Button -->
+      <div class="mb-4 text-center text-md-start">
+        <button *ngIf="!showForm"
+                class="btn btn-success btn-create"
+                (click)="openCreateForm()">
+          <span class="create-icon">+</span>
+          <span>Create New Todo</span>
+        </button>
+      </div>
+
+      <!-- Form -->
+      <app-todo-form *ngIf="showForm"
+                     [todoToEdit]="todoToEdit"
+                     (todoCreated)="onCreateTodo($event)"
+                     (todoUpdated)="onUpdateTodo()"
+                     (formClosed)="onFormClosed()">
+      </app-todo-form>
+
+      <!-- Todo List -->
+      <app-todo-list #todoList></app-todo-list>
+    </div>
+  </div>
+</div>
+
+<footer class="footer mt-5">
+  <div class="footer-wave"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-md-7 col-12 text-center text-md-start">
+        <p class="footer-text mb-2">
+          <strong>{{ title }}</strong> • {{ currentYear }}
+        </p>
+        <p class="footer-subtext mb-3 mb-md-0">Crafted with <span class="heart">❤</span> using Angular & ASP.NET Core</p>
+      </div>
+      <div class="col-md-5 col-12 text-center text-md-end">
+        <div class="tech-stack d-inline-flex align-items-center gap-4">
+          <div class="logo-card angular" title="Angular">
+            <img src="/angular.svg" alt="Angular Logo" class="footer-logo" />
+            <span class="logo-label">Angular</span>
+          </div>
+          <div class="logo-card dotnet" title=".NET">
+            <img src="/dotnet.svg" alt=".NET Logo" class="footer-logo" />
+            <span class="logo-label">.NET</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

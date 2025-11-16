@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="256" height="256" role="img" aria-labelledby="title desc">
+  <title id="title">Angular Fragment Logo</title>
+  <desc id="desc">Angular 17 style fragmented logo with gradient wordmark.</desc>
+  <defs>
+    <!-- Gradients matching reference: pink -> magenta -> violet -->
+    <linearGradient id="gradLeft" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FF54E6"/>
+      <stop offset="55%" stop-color="#E8145A"/>
+      <stop offset="100%" stop-color="#DB0046"/>
+    </linearGradient>
+    <linearGradient id="gradRight" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#C441FF"/>
+      <stop offset="55%" stop-color="#8E34FF"/>
+      <stop offset="100%" stop-color="#6B31FF"/>
+    </linearGradient>
+    <linearGradient id="gradTriangle" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FF54E6"/>
+      <stop offset="80%" stop-color="#D6005A"/>
+    </linearGradient>
+    <linearGradient id="gradBottom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF004D"/>
+      <stop offset="45%" stop-color="#E3002C"/>
+      <stop offset="100%" stop-color="#C00078"/>
+    </linearGradient>
+    <linearGradient id="gradText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF54E6"/>
+      <stop offset="40%" stop-color="#C441FF"/>
+      <stop offset="75%" stop-color="#7A39FF"/>
+      <stop offset="100%" stop-color="#5A2FE0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Group scaled to center fragments within canvas -->
+  <g transform="translate(320 230)">
+    <!-- Left wing: tapered quadrilateral -->
+    <!-- Coordinates chosen for similar proportions: top width > bottom width -->
+    <path d="M -168 -190 L -250 -150 L -214 108 L -90 -140 Z" fill="url(#gradLeft)"/>
+    <!-- Right wing -->
+    <path d="M 168 -190 L 250 -150 L 214 108 L 90 -140 Z" fill="url(#gradRight)"/>
+
+    <!-- Central triangle (A apex) -->
+    <path d="M 0 -100 L 52 20 H -52 Z" fill="url(#gradTriangle)"/>
+
+    <!-- Bottom pentagon (A crossbar & base) -->
+    <!-- Symmetric pentagon flared upward -->
+    <path d="M 0 60 L -90 60 L -70 10 L 70 10 L 90 60 Z" fill="url(#gradBottom)"/>
+  </g>
+
+  <!-- Wordmark below fragments -->
+  <text x="50%" y="560" text-anchor="middle" font-family="'Segoe UI','Inter',Arial,sans-serif" font-size="170" font-weight="600" fill="url(#gradText)" letter-spacing="2">Angular</text>
+</svg>
